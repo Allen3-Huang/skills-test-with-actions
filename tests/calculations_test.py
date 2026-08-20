@@ -7,7 +7,7 @@ import pytest
 
 # Project Modules
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
-from calculations import area_of_circle, get_nth_fibonacci   # noqa: E402
+from calculations import area_of_circle, get_nth_fibonacci, area_of_triangle   # noqa: E402
 
 
 def test_area_of_circle_positive_radius():
@@ -56,6 +56,62 @@ def test_get_nth_fibonacci_one():
 
     # Assert
     assert result == 1
+
+
+def test_area_of_triangle_positive_values():
+    """Test with positive base and height."""
+    # Arrange
+    base = 6
+    height = 4
+
+    # Act
+    result = area_of_triangle(base, height)
+
+    # Assert
+    assert result == 12.0
+
+
+def test_area_of_triangle_zero_base():
+    """Test with a base of zero."""
+    # Arrange
+    base = 0
+    height = 5
+
+    # Act
+    result = area_of_triangle(base, height)
+
+    # Assert
+    assert result == 0
+
+
+def test_area_of_triangle_negative_base():
+    """Test that a negative base raises ValueError."""
+    with pytest.raises(ValueError):
+        area_of_triangle(-1, 5)
+
+
+def test_area_of_circle_negative_radius():
+    """Test that a negative radius raises ValueError."""
+    with pytest.raises(ValueError):
+        area_of_circle(-1)
+
+
+def test_get_nth_fibonacci_negative():
+    """Test that a negative n raises ValueError."""
+    with pytest.raises(ValueError):
+        get_nth_fibonacci(-1)
+
+
+def test_get_nth_fibonacci_ten():
+    """Test with n=10."""
+    # Arrange
+    n = 10
+
+    # Act
+    result = get_nth_fibonacci(n)
+
+    # Assert
+    assert result == 55
 
 
 # def test_get_nth_fibonacci_ten():
