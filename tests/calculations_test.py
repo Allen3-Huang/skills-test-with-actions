@@ -86,9 +86,32 @@ def test_area_of_triangle_zero_base():
 
 def test_area_of_triangle_negative_base():
     """Test that a negative base raises ValueError."""
-    import pytest
     with pytest.raises(ValueError):
         area_of_triangle(-1, 5)
+
+
+def test_area_of_circle_negative_radius():
+    """Test that a negative radius raises ValueError."""
+    with pytest.raises(ValueError):
+        area_of_circle(-1)
+
+
+def test_get_nth_fibonacci_negative():
+    """Test that a negative n raises ValueError."""
+    with pytest.raises(ValueError):
+        get_nth_fibonacci(-1)
+
+
+def test_get_nth_fibonacci_ten():
+    """Test with n=10."""
+    # Arrange
+    n = 10
+
+    # Act
+    result = get_nth_fibonacci(n)
+
+    # Assert
+    assert result == 55
 
 
 # def test_get_nth_fibonacci_ten():
