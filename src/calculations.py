@@ -12,6 +12,13 @@ def area_of_circle(radius):
     return math.pi * radius ** 2
 
 
+def area_of_triangle(base, height):
+    """Calculate the area of a triangle given its base and height."""
+    if base < 0 or height < 0:
+        raise ValueError("Base and height cannot be negative")
+    return 0.5 * base * height
+
+
 def get_nth_fibonacci(n):
     """Calculate the nth Fibonacci number."""
     if n < 0:
